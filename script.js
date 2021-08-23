@@ -3,17 +3,18 @@ let result = document.querySelector('.result');
 let operators = document.querySelectorAll('.operator');
 let clear = document.querySelector('.clear');
 let isEqual = document.querySelector('.equal');
+let back = document.querySelector('.back');
 let previousNumber;
 let currentNumber;
 let operatorSaver;
 parseInt(result.innerText)
-// parseInt(result)
 // Numbers buttons
 numbers.forEach(item => {
   item.addEventListener("click", () => {
     // console.log(typeof (parseInt(result)));
     if (result.innerText === '+' || result.innerText === '-' || result.innerText === 'X' || result.innerText === '÷') {
       result.innerText = null;
+      result.innerText += item.innerText;
     } else {
       result.innerText += item.innerText;
     }
@@ -50,6 +51,10 @@ isEqual.addEventListener("click", () => {
     default:
       result.innerText = result.innerText = 'Something went wrong';
   };
+})
+
+back.addEventListener("click", () => {
+    result.innerText = result.innerText.substr(0, result.innerText.length - 1);
 })
 // Equal button
 clear.addEventListener("click", () => {
